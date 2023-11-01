@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --clr-bg: 0 0% 100%;
+    --clr-destructive: 0 100% 50%;
+    --clr-text: 222.2 47.4% 11.2%;
+    --clr-border: 214.3 31.8% 91.4%;
+    --clr-input: 214.3 31.8% 91.4%;
+    --clr-ring: 215 20.2% 65.1%;
+  }
+
+  :root[data-mode="dark"] {
+    --clr-bg: 224 71% 4%;
+    --clr-destructive: 0 63% 31%;
+    --clr-text: 210 40% 98%;
+    --clr-border: 216 34% 17%;
+    --clr-input: 216 34% 17%;
+    --ring: 216 34% 17%;
+  }
+
+  /* by system preference */
+  /* @media (prefers-color-scheme: dark) {
+    :root {
+      --clr-bg: 224 71% 4%;
+      --clr-destructive: 0 63% 31%;
+      --clr-text: 210 40% 98%;
+      --clr-border: 216 34% 17%;
+      --clr-input: 216 34% 17%;
+      --ring: 216 34% 17%;
+    }
+  } */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-primary;
+  }
+}
