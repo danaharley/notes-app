@@ -9,7 +9,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={nc(
-          "rounded bg-zinc-50 p-1.5 ring-1 ring-zinc-600 focus:ring-2 focus:ring-zinc-700/60 md:p-2",
+          "bg-background rounded p-1.5 ring-1 ring-zinc-600 focus:ring-2 focus:ring-zinc-700/60 md:p-2",
           className,
         )}
         ref={ref}

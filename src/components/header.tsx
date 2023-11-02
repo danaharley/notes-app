@@ -5,13 +5,13 @@ const Header = () => {
   return (
     <header className="bg-background fixed top-0 w-full border-b px-4 py-3 shadow-sm md:px-6 md:py-5">
       <div className="mx-auto flex max-w-6xl items-center justify-between">
-        <h1 className="text-primary text-base font-semibold uppercase md:text-xl">
+        <h1 className="text-primary text-base font-semibold uppercase md:pl-4 md:text-xl">
           Notes App
         </h1>
         <div className="flex items-center space-x-2.5">
           <div className="relative">
             <Input
-              className="w-44 px-1.5 py-1 text-sm sm:w-64 md:p-2 md:placeholder:text-base"
+              className="bg-input focus:ring-ring/70 w-44 px-1.5 py-1 text-sm focus:ring sm:w-64 md:p-2  md:placeholder:text-base"
               placeholder="search"
             />
             <svg

@@ -8,7 +8,7 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <main className="mx-auto mt-14 flex max-w-6xl flex-col md:mt-20 md:flex-row">
+      <main className="mx-auto mt-14 flex min-h-screen max-w-6xl flex-col md:mt-20 md:flex-row">
         <Sidebar />
         <Outlet />
       </main>

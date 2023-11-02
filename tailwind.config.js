@@ -6,6 +6,7 @@ export default {
     extend: {
       colors: {
         background: "hsl(var(--clr-bg))",
+        hover: "hsl(var(--clr-bg-hover))",
         destructive: "hsl(var(--clr-destructive))",
         primary: "hsl(var(--clr-text))",
         border: "hsl(var(--clr-border))",
