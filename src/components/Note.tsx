@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import { formatDate } from "../lib/utils";
 
 interface Note {
   title: string;
@@ -21,7 +22,9 @@ const Note: React.FC<Note> = ({
   return (
     <div className="space-y-4 rounded border p-4 transition duration-200 ease-in-out hover:scale-105 hover:bg-hover/20 hover:shadow-sm hover:duration-300">
       <h1 className="font-bold md:text-lg">{title}</h1>
-      <span className="text-xs text-zinc-400/80 sm:text-sm">{createdAt}</span>
+      <span className="text-xs text-zinc-400/80 sm:text-sm">
+        {formatDate(createdAt)}
+      </span>
       <p className="text-sm md:text-base">{body}</p>
 
       <div className="flex items-center justify-end space-x-2.5">

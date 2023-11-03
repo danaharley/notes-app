@@ -17,8 +17,12 @@ export const generateId = () => {
   return +new Date();
 };
 
-export const formatDate = () => {
-  return new Date().toLocaleDateString("id", {
+export const generateDate = () => {
+  return new Date().toISOString();
+};
+
+export const formatDate = (date: string) => {
+  return new Date(date).toLocaleDateString("id", {
     weekday: "long",
     year: "numeric",
     month: "short",

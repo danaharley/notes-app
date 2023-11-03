@@ -45,7 +45,7 @@ const Footer = () => {
       <div className="mx-auto max-w-6xl p-4 text-center">
         <p>&copy; Build with ♥️ | Dana Harliansyah</p>
 
-        <div className="mt-3 flex items-center justify-center space-x-2">
+        <div className="my-3 flex items-center justify-center space-x-2">
           {sosmed.map((dana, i) => (
             <Link key={i} to={dana.href} target="_blank">
               {dana.logo}

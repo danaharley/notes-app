@@ -7,7 +7,7 @@ import EmptyState from "../components/empty-state";
 
 import useNotes from "../hooks/useNotes";
 
-import { formObject, formatDate, generateId } from "../lib/utils";
+import { formObject, generateDate, generateId } from "../lib/utils";
 
 const Index = () => {
   const [isFocused, setIsFocused] = useState(false);
@@ -21,7 +21,7 @@ const Index = () => {
     e.preventDefault();
 
     const id = generateId();
-    const createdAt = formatDate();
+    const createdAt = generateDate();
 
     const data = formObject({
       id,
