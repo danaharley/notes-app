@@ -4,6 +4,8 @@ import { Note } from "../lib/utils";
 
 interface NotesContextProps {
   notes: Note[];
+  query: string;
+  setQuery: (value: string) => void;
   addNote: (note: Note) => void;
   archivedNote: (id: number | string) => void;
   deleteNote: (id: number | string) => void;
@@ -15,6 +17,8 @@ interface NotesProviderProps {
 
 export const NotesContext = createContext<NotesContextProps>({
   notes: [],
+  query: "",
+  setQuery: () => {},
   addNote: () => {},
   archivedNote: () => {},
   deleteNote: () => {},
@@ -22,6 +26,7 @@ export const NotesContext = createContext<NotesContextProps>({
 
 export const NotesProvider = ({ children }: NotesProviderProps) => {
   const [notes, setNotes] = useState<Note[]>([]);
+  const [query, setQuery] = useState("");
 
   const addNote = (note: Note) => {
     setNotes([...notes, note]);
@@ -45,7 +50,16 @@ export const NotesProvider = ({ children }: NotesProviderProps) => {
   };
 
   return (
-    <NotesContext.Provider value={{ notes, addNote, archivedNote, deleteNote }}>
+    <NotesContext.Provider
+      value={{
+        notes,
+        query,
+        setQuery,
+        addNote,
+        archivedNote,
+        deleteNote,
+      }}
+    >
       {children}
     </NotesContext.Provider>
   );

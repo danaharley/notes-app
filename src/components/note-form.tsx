@@ -8,6 +8,7 @@ interface NoteFormProps {
   title: string;
   body: string;
   archived: boolean;
+  characterLimit: number;
   onTitleChange: (value: string) => void;
   onBodyChange: (value: string) => void;
   onArchivedChange: (value: boolean) => void;
@@ -19,6 +20,7 @@ const NoteForm: React.FC<NoteFormProps> = ({
   title,
   body,
   archived,
+  characterLimit = 50,
   onTitleChange,
   onBodyChange,
   onArchivedChange,
@@ -28,14 +30,26 @@ const NoteForm: React.FC<NoteFormProps> = ({
   return (
     <form
       onSubmit={onSubmit}
-      className="absolute inset-x-0 top-0 rounded border bg-background p-2 shadow-md"
+      className="absolute inset-x-0 top-0 z-10 rounded border bg-background p-2 shadow-md"
     >
+      {title && title.length && (
+        <div className="absolute -top-3 rounded-xl bg-primary px-2 py-0.5 shadow">
+          <p className="text-xs text-background">
+            Characters left: {characterLimit - title.length}/{characterLimit}
+          </p>
+        </div>
+      )}
       <div className="flex flex-col">
         <Input
           placeholder="Title..."
           className="border-0 bg-transparent px-3 py-2 placeholder:font-semibold"
           value={title}
-          onChange={(e) => onTitleChange(e.target.value)}
+          onChange={(e) => {
+            title = e.target.value;
+
+            if (title.length <= characterLimit) onTitleChange(title);
+          }}
+          maxLength={characterLimit}
         />
 
         <TextArea

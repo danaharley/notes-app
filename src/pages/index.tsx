@@ -15,7 +15,7 @@ const Index = () => {
   const [body, setBody] = useState("");
   const [archived, setArchived] = useState(false);
 
-  const { notes, addNote, archivedNote, deleteNote } = useNotes();
+  const { notes, query, addNote, archivedNote, deleteNote } = useNotes();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,12 +39,20 @@ const Index = () => {
     setIsFocused(false);
   };
 
+  const noteList = notes.filter(
+    (note) =>
+      note.archived === false &&
+      note.title.toLowerCase().includes(query.toLowerCase()),
+  );
+
   return (
     <div className="flex-1">
-      <div className="m-4 flex justify-center">
+      <div className="mx-4 mb-4 mt-7 flex justify-center">
         <div className="relative w-full md:max-w-lg">
           <Input
-            className="w-full bg-transparent px-3 py-2 shadow-sm"
+            className={`w-full bg-transparent px-3 py-2 shadow-sm ${
+              isFocused && "invisible"
+            }`}
             placeholder="Take a note.."
             onClick={() => setIsFocused(!isFocused)}
           />
@@ -53,6 +61,7 @@ const Index = () => {
               title={title}
               body={body}
               archived={archived}
+              characterLimit={50}
               onTitleChange={setTitle}
               onBodyChange={setBody}
               onArchivedChange={setArchived}
@@ -63,19 +72,17 @@ const Index = () => {
         </div>
       </div>
       <div className="m-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {notes && notes.length ? (
-          notes
-            .filter((note) => note.archived === false)
-            .map((note) => (
-              <Note
-                key={note.id}
-                title={note.title}
-                body={note.body}
-                createdAt={note.createdAt}
-                onArchived={() => archivedNote(note.id)}
-                onDelete={() => deleteNote(note.id)}
-              />
-            ))
+        {noteList.length > 0 ? (
+          noteList.map((note) => (
+            <Note
+              key={note.id}
+              title={note.title}
+              body={note.body}
+              createdAt={note.createdAt}
+              onArchived={() => archivedNote(note.id)}
+              onDelete={() => deleteNote(note.id)}
+            />
+          ))
         ) : (
           <EmptyState title="No Notes" subtitle="Notes you add appear here" />
         )}

@@ -1,18 +1,23 @@
 import Input from "./input";
 import Switcher from "./switcher";
 
+import useNotes from "../hooks/useNotes";
+
 const Header = () => {
+  const { setQuery } = useNotes();
+
   return (
-    <header className="bg-background fixed top-0 w-full border-b px-4 py-3 shadow-sm md:px-6 md:py-5">
+    <header className="fixed top-0 z-20 w-full border-b bg-background px-4 py-3 shadow-sm md:px-6 md:py-5">
       <div className="mx-auto flex max-w-6xl items-center justify-between">
-        <h1 className="text-primary text-base font-semibold uppercase md:pl-4 md:text-xl">
+        <h1 className="text-base font-semibold uppercase text-primary md:pl-4 md:text-xl">
           Notes App
         </h1>
         <div className="flex items-center space-x-2.5">
           <div className="relative">
             <Input
-              className="bg-input focus:ring-ring/70 w-44 px-1.5 py-1 text-sm focus:ring sm:w-64 md:p-2  md:placeholder:text-base"
+              className="w-44 bg-input px-1.5 py-1 text-sm focus:ring focus:ring-ring/70 sm:w-64 md:p-2  md:placeholder:text-base"
               placeholder="search"
+              onChange={(e) => setQuery(e.target.value)}
             />
             <svg
               className="absolute right-1 top-1 h-5 w-5 fill-zinc-400 md:right-2 md:top-1.5 md:h-6 md:w-6"
